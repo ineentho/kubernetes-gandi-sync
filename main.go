@@ -20,15 +20,11 @@ import (
 )
 
 var options = struct {
-	CloudflareAPIEmail string
-	CloudflareAPIKey   string
 	DNSNames           string
 	NodeSelector       string
 	LivednsKey         string
 	HumanLogs          bool
 }{
-	CloudflareAPIEmail: os.Getenv("CF_API_EMAIL"),
-	CloudflareAPIKey:   os.Getenv("CF_API_KEY"),
 	DNSNames:           os.Getenv("DNS_NAMES"),
 	NodeSelector:       os.Getenv("NODE_SELECTOR"),
 	LivednsKey:         os.Getenv("GANDI_LIVEDNS_KEY"),
@@ -41,7 +37,7 @@ func main() {
 	}
 
 	if options.LivednsKey == "" {
-		log.Fatal().Msg("LIVEDNS_KEY is required")
+		log.Fatal().Msg("GANDI_LIVEDNS_KEY is required")
 		os.Exit(1)
 	}
 
